@@ -40,6 +40,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          show_full_output: true
           # Main/orchestrator model: Sonnet. It coordinates and answers simple
           # questions itself; heavier or cheaper work goes to the subagents below.
           claude_args: |
