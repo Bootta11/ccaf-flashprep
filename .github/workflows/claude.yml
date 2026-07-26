@@ -45,6 +45,6 @@ jobs:
           # questions itself; heavier or cheaper work goes to the subagents below.
           claude_args: |
             --model claude-sonnet-4-6
-            --max-turns 30
+            --max-turns 60
             --allowedTools "Edit,Write,Task,Bash(npm install),Bash(npm run build),Bash(npm run test:*),Bash(npm run lint:*)"
             --append-system-prompt "Be concise and focus only on files relevant to the request. Workflow for any task involving code changes: 1) send the task to 'planner' (Opus) to produce a step-tagged plan; 2) dispatch [MECHANICAL] steps to 'executor' (Haiku) and [JUDGMENT] steps to 'fixer' (Sonnet); 3) if the executor escalates a failure, send that step plus the error report to 'fixer', then resume remaining mechanical steps on 'executor'; 4) if fixer says the plan is invalid, go back to 'planner' once. Use 'runner' (Haiku) for standalone searches, npm scripts, and log reading. For trivial questions or one-line edits, answer or edit directly without spawning subagents. Never let executor retry a failed step more than twice."
